@@ -3,8 +3,13 @@
 
 通过主动连接具有公网IP的电脑打通隧道可实现内网穿透，让内网主机提供的服务能够借助外网主机来访问。软件实现的端口转发，透明代理，在主机限制入站规则但未限制出站规则的特定情况下可绕过防火墙。
 
-# build
+# 编译
+### 本地架构
 `go build nb.go`
+### MIPS架构(MT7621)
+`GOOS=linux GOARCH=mipsle GOMIPS=softfloat CGO_ENABLED=0 go build`
+### ARM64架构(RK3328)
+`GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build`
 
 如果未出现任何消息则表示编译成功。（Linux哲学：没有消息就是最好的消息）
 
@@ -14,17 +19,18 @@
 
 如果运行出现错误，请检查您所输入的参数是否有错，或者相应的端口被占用，请更换端口重试。如果未看见欢迎消息，请给编译好的可执行文件设置权限为777。如果无法写日志，请检查当前用户是否有权限在日志文件路径的读写权限。
 
-# release
-https://github.com/cw1997/NATBypass/releases
+# 发布
+https://github.com/coflery/NATBypass/releases
 
--v1.0.0 发布时间：2017-10-20 16:11:02 平台：Windows-386，Windows-amd64 [下载地址](https://github.com/cw1997/NATBypass/releases/tag/v1.0.0) 
+- v1.0.3 发布时间：2021-05-26 13:06:01 平台：Windows-amd64 [下载地址](https://github.com/coflery/NATBypass/releases/tag/v1.0.3)
+- v1.0.2 发布时间：2021-01-26 15:01:01 平台：Windows-amd64 [下载地址](https://github.com/coflery/NATBypass/releases/tag/v1.0.2)
 
-# platform
+# 平台
 - Windows 7 7601 + go1.7.5(windows/amd64) 编译与测试通过
 - Ubuntu 16.04.1 + go1.6.2(linux/amd64) 编译与测试通过
 - Windows 2003 SP2 3790 + go1.9.1(windows/386) 编译与测试通过
 
-# usage
+# 用法
 
 ### 语法
 - -listen port1 port2 
@@ -78,7 +84,7 @@ https://github.com/cw1997/NATBypass/releases
 
 技巧：可使用Linux下的`tail -f`命令将转发数据实时显示出来。
 
-# example
+# 例
 假设有外网主机`123.123.123.123:1997`和`123.123.123.123:2017`端口开放。
 
 内网主机`192.168.1.2:3389`需要转发到外网。首先在外网主机执行
