@@ -1,0 +1,16 @@
+os: linux
+language: go
+go:
+  - 1.7
+
+install: skip
+
+env:
+  - TRAVIS="yes"
+
+script:
+  - pushd $TRAVIS_BUILD_DIR
+  - go build
+  - GOARCH=arm64 go build
+  - go test -v
+  - popd

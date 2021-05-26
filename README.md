@@ -1,6 +1,9 @@
 # NATBypass (内网穿透，端口转发工具)
 一款lcx（htran）在golang下的实现
 
+当前版本：1.0.3 [CHANGELOG](CHANGELOG.md)
+[![Build Status](https://travis-ci.com/coflery/NATBypass.png?branch=master)](https://travis-ci.com/coflery/NATBypass)
+
 通过主动连接具有公网IP的电脑打通隧道可实现内网穿透，让内网主机提供的服务能够借助外网主机来访问。软件实现的端口转发，透明代理，在主机限制入站规则但未限制出站规则的特定情况下可绕过防火墙。
 
 # 编译
